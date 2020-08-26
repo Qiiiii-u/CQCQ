@@ -28,20 +28,6 @@ Page({
     }
   },
 
-  //跳转至修改图片
-  /*changeImage:function(){
-    wx.navigateTo({
-      url: '',
-    })
-  },
-
-  //跳转至修改昵称
-  changeName:function(){
-    wx.navigateTo({
-      url: '',
-    })
-  },*/
-
   //退出登录
   turnLogin: function () {
     wx.redirectTo({
@@ -188,44 +174,15 @@ Component({
       })
     },
 
-    to_pass:function(){
+    to_safe:function(){
       wx.showLoading({
         title: '加载中',
         mask: true,
       })
       wx.navigateTo({
-        url: '../revise_password/revise_password',
+        url:"../safe/safe"
       })
-    },
-
-    to_mail:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url: '../revise_email/revise_email',
-      })
-    },
-
-    to_phone:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url: '../revise_phone/revise_phone',
-      })
-    },
-
-    to_phone:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url: '../revise_phone/revise_phone',
-      })
+      wx.hideLoading()
     },
 
     to_about:function(){

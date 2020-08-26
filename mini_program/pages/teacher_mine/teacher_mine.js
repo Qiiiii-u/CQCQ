@@ -202,39 +202,6 @@ Component({
       wx.hideLoading()
     },
 
-    to_pass:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url:"../revise_password/revise_password"
-      })
-      wx.hideLoading()
-    },
-
-    to_mail:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url:"../revise_email/revise_email"
-      })
-      wx.hideLoading()
-    },
-
-    to_phone:function(){
-      wx.showLoading({
-        title: '加载中',
-        mask: true,
-      })
-      wx.navigateTo({
-        url:"../revise_phone/revise_phone"
-      })
-      wx.hideLoading()
-    },
-
     to_re:function(){
       wx.showLoading({
         title: '加载中',
@@ -253,6 +220,17 @@ Component({
       })
       wx.navigateTo({
         url:"../revise_about/revise_about"
+      })
+      wx.hideLoading()
+    },
+
+    to_safe:function(){
+      wx.showLoading({
+        title: '加载中',
+        mask: true,
+      })
+      wx.navigateTo({
+        url:"../safe/safe"
       })
       wx.hideLoading()
     },

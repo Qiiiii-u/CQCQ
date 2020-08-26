@@ -19,10 +19,10 @@ Page({
   onShow: function (options) {
     var _this = this;
     if (getApp().globalData.user.phone == null) {
-      getApp().globalData.user.phone = "无";
+      getApp().globalData.user.phone = "暂无";
     }
     if (getApp().globalData.user.email == null) {
-      getApp().globalData.user.email = "无";
+      getApp().globalData.user.email = "暂无";
     }
     _this.setData({
       gr1: getApp().globalData.user.username,
@@ -44,7 +44,6 @@ Page({
   },
   data: {
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框 
-    hiddenmodalput: true,
     gr1: '',
     name: '',
     gr: '',
@@ -64,11 +63,12 @@ Page({
     var that = this;
     var block = getApp().globalData.multiArray[0][e.detail.value[0]];
     var room = getApp().globalData.multiArray[1][e.detail.value[1]] + getApp().globalData.multiArray[2][e.detail.value[2]];
+    console.log(room);
     wx.request({
-      'url': getApp().globalData.server + '/cqcq/public/index.php/index/change/changeDormNumber',
+      'url': getApp().globalData.server + '/cqcq/public/index.php/api/change/changeDormNumber',
       //发给服务器的数据
       data: {
-        student_id: getApp().globalData.user.id,
+        id: getApp().globalData.user.id,
         block: block,
         room: room,
       },
@@ -120,21 +120,15 @@ Page({
   },
   //昵称：接口
   //点击按钮弹窗指定的hiddenmodalput弹出框 
-  modalinput: function () {
+  modalinput: function (e) {
     this.setData({
-      config: {
-        tipsshow: "block"
-      },
-      hiddenmodalput: !this.data.hiddenmodalput,
+      modalName: e.currentTarget.dataset.target
     })
   },
-  cancel: function () {
+  cancel: function (e) {
     this.setData({
-      config: {
-        tipsshow: "none",
-      },
-      hiddenmodalput: true,
-      name: ''
+      name: '',
+      modalName: null
     });
   },
   //确认 
@@ -142,7 +136,7 @@ Page({
     var that = this;
     getApp().globalData.name = that.data.gr;
     wx.request({
-      'url': getApp().globalData.server + '/cqcq/public/index.php/index/change/changeusername',
+      'url': getApp().globalData.server + '/cqcq/public/index.php/api/change/changeusername',
       //发给服务器的数据
       data: {
         id: getApp().globalData.user.id,
@@ -162,11 +156,8 @@ Page({
           })
         } else if (res.data.error_code == 0) {
           that.setData({
-            config: {
-              tipsshow: "none"
-            },
-            hiddenmodalput: true,
-            name: ''
+            name: '',
+            modalName: null
           })
           wx.showModal({
             title: '恭喜！',
@@ -209,6 +200,5 @@ Page({
       gr: e.detail.value,
     })
   },
-
 
 })

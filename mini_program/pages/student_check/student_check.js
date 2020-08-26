@@ -26,7 +26,7 @@ Page({
     console.log(this.data.student_id)
     var that = this
     wx.request({
-      url: getApp().globalData.server + '/cqcq/public/index.php/index/Checkresults/specifiedDate',
+      url: getApp().globalData.server + '/cqcq/public/index.php/api/Checkresults/specifiedDate',
       data: {
         grade: that.data.grade,
         department: that.data.department,
@@ -139,7 +139,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: getApp().globalData.server + '/cqcq/public/index.php/index/Checkresults/studentCheckRecords',
+      url: getApp().globalData.server + '/cqcq/public/index.php/api/Checkresults/studentCheckRecords',
       data: {
         department: that.data.department,
         grade: that.data.grade,
