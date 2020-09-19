@@ -159,9 +159,9 @@ Page({
             isScroll: true
         })
         var that = this
-        wx.showLoading({
-            title: '加载中',
-        })
+        // wx.showLoading({
+        //     title: '加载中',
+        // })
         wx.request({
             url: getApp().globalData.server + '/cqcq/public/index.php/api/Checkresults/checkRecords',
             data: {

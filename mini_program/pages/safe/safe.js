@@ -122,6 +122,47 @@ Component({
         console.log(456)
       },
     },
+    // 绑定微信
+    to_weixin:function(){
+      var that = this
+      wx.login({
+        success: function (res) {
+          console.log("code: ", res.code)
+          wx.request({
+            url: getApp().globalData.server + '/cqcq/public/index.php/api/user/wxbinding',
+            data: {
+              code: res.code,
+              id: getApp().globalData.user.id,
+              user: getApp().globalData.user.user,
+            },
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+              if (res.data.error_code != 0) {
+                wx.showModal({
+                  title: '提示！',
+                  content: res.data.msg,
+                  confirmColor: '#7EC4F8',
+                  showCancel: false,
+                  success(res) {}
+                })
+              } else if (res.data.error_code == 0) {
+                wx.showModal({
+                  title: '提示！',
+                  content: res.data.msg,
+                  confirmColor: '#7EC4F8',
+                  showCancel: false,
+                  success(res) {}
+                })
+              }
+            },
+          })
+        }
+      })
+    
+    },
 
     to_pass:function(){
       wx.showLoading({

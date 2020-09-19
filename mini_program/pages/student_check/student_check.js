@@ -9,7 +9,7 @@ Page({
     dateValue: " - - ",
     grade: "",
     department: "",
-    student_id: "",
+    dorm: "",
     isShow: false,
   },
 
@@ -23,7 +23,7 @@ Page({
   onSearch: function (e) {
     console.log(this.data.grade)
     console.log(this.data.department)
-    console.log(this.data.student_id)
+    console.log(this.data.dorm)
     var that = this
     wx.request({
       url: getApp().globalData.server + '/cqcq/public/index.php/api/Checkresults/specifiedDate',
@@ -132,7 +132,7 @@ Page({
     this.setData({
       grade: getApp().globalData.user.grade,
       department: getApp().globalData.user.department,
-      student_id: getApp().globalData.user.id,
+      dorm: getApp().globalData.user.dorm,
     })
     var that = this
     wx.showLoading({
@@ -143,7 +143,7 @@ Page({
       data: {
         department: that.data.department,
         grade: that.data.grade,
-        student_id: that.data.student_id
+        dorm: that.data.dorm
       },
       method: "POST",
       header: {
@@ -230,9 +230,9 @@ Page({
     this.setData({
       grade: getApp().globalData.user.grade,
       department: getApp().globalData.user.department,
-      student_id: getApp().globalData.user.id,
+      dorm: getApp().globalData.user.dorm,
     })
-    console.log(this.data.student_id)
+    console.log(this.data.dorm)
   },
 
   /**

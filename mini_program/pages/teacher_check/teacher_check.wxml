@@ -38,9 +38,10 @@
 </scroll-view>
 <!-- 懒加载 -->
 <view class='warn_text' hidden='{{!isShowLoadmore}}'>
-	<view class='loadmore_tips'>————正在加载————</view>
+	<loadmore show="true" type="loading" line="true"></loadmore>
 </view>
 <view class="warn_text" hidden='{{!isShowNoDatasTips}}'>
-	<view class="loadmore_tips">————暂无数据————</view>
+	<loadmore show="true" type="end" end-text="已经到底啦~" line="true"></loadmore>
 </view>
-<image class="image" src="/images/data.png" mode="widthFix" hidden='{{!isShow}}'></image>
+<!-- <image class="image" src="/images/nodata.png" hidden='{{!isShow}}'></image> -->
+<status-show show="{{isShow}}" image="/images/nodata.png" describe="暂无数据哦~"></status-show>
