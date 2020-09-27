@@ -9,7 +9,7 @@
 			<view class="cu-bar bg-white justify-end">
 				<view class="content">输入昵称</view>
 			</view>
-			<input value="{{name}}" bindblur='getInput' type='text' placeholder="请输入你的昵称，如：东二410" />
+			<input style="line-height: 1;min-height: 1;" value="{{name}}" bindblur='getInput' type='text' placeholder="请输入你的昵称，如：东二410" />
 			<view class="cu-bar bg-white">
 				<view class="action text-green" bindtap="confirm">确定</view>
 				<view class="action text-blue" bindtap="cancel">取消</view>

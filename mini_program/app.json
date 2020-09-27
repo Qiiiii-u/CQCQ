@@ -11,6 +11,7 @@
     "pages/teacher_information/teacher_information",
     "pages/revise_information/revise_information",
     "pages/student_mine/student_mine", 
+    "pages/situation/situation",
     "pages/revise_about/revise_about",
     "pages/revise_email/revise_email",
     "pages/uploadphoto/uploadphoto",
@@ -30,6 +31,8 @@
     "pages/teacher_mine/teacher_mine",
     "pages/teacher_home/teacher_home",
     "pages/teacher_dorm/teacher_dorm",
+    "pages/teacher_statistics/teacher_statistics",
+    "pages/more/more",
     
     "pages/teacher_check/teacher_check",
     "pages/forget/forget",

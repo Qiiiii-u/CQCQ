@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "loadmore": "../../lin-ui/loadmore/index",
-    "status-show": "../../lin-ui/status-show/index"
+    "status-show": "../../lin-ui/status-show/index",
+    "i-icon":"../../dist/icon/index"
   },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",

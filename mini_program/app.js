@@ -54,6 +54,7 @@ App({
     userInfo: {}, //微信获取用户信息
     server: 'https://oeong.xyz', //域名
     height: '', //手机屏幕高度
+    width: '',
     load: false, //判断用户是否授权
     PageCur: '',
     flag: '',

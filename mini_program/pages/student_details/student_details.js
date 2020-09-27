@@ -11,7 +11,8 @@ Page({
     dorm: "",
     triggered: false, //下拉刷新状态 关闭
     _options: null,
-    list: []
+    list: [],  //未签
+    sign_list: [] //已签
   },
 
   //点击图片预览
@@ -22,9 +23,9 @@ Page({
     wx.previewImage({
       urls: [imgUrl], //需要预览的图片http链接列表，注意是数组
       current: imgUrl, // 当前显示图片的http链接，默认是第一个
-      success: function (res) {},
-      fail: function (res) {},
-      complete: function (res) {},
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
 
@@ -53,22 +54,22 @@ Page({
     //时  
     var h = date.getHours();
     if (h < 10) {
-        h = '0' + h
+      h = '0' + h
     }
     //分  
     var m = date.getMinutes();
     if (m < 10) {
-        m = '0' + m
+      m = '0' + m
     }
     //秒  
     var s = date.getSeconds();
     if (s < 10) {
-        s = '0' + s
+      s = '0' + s
     }
     console.log("当前时间：" + Y + "-" + M + "-" + D + " " + h + ":" + m + ":" + s);
     var time = Y + "-" + M + "-" + D + " " + h + ":" + m + ":" + s;
     this.setData({
-        time: time
+      time: time
     })
     var that = this
     wx.showLoading({
@@ -93,14 +94,14 @@ Page({
             title: '提示！',
             showCancel: false,
             content: res.data.msg,
-            success: function (res) {}
+            success: function (res) { }
           })
         } else if (res.data.error_code == 2) {
           wx.showModal({
             title: '提示！',
             showCancel: false,
             content: res.data.msg,
-            success: function (res) {}
+            success: function (res) { }
           })
         } else if (res.data.error_code != 0) {
           wx.showModal({
@@ -145,6 +146,57 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 2000)
+
+    wx.request({
+      url: getApp().globalData.server + '/cqcq/public/index.php/api/Statistics/face_search',
+      //发给服务器的数据
+      data: {
+        grade: this.data.grade,
+        department: this.data.department,
+        start_time: options.time,
+        dorm: this.data.dorm,
+        end_time: options.endtime,
+      },
+      method: "POST",
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.error_code == 1) {
+          wx.showModal({
+            title: '提示',
+            content: res.data.msg,
+            showCancel: false,
+            success: function (res) { }
+          })
+          console.log(res);
+        } else if (res.data.error_code == 2) {
+          that.setData({
+            list: res.data.unsign_stu
+          })
+          console.log(that.data.list);
+        } else if (res.data.error_code == 0) {
+          that.setData({
+            list: res.data.unsign_stu,
+            sign_list: res.data.sign_stu
+          })
+          // console.log(that.data.list);
+        }
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '哎呀～',
+          content: '网络不在状态呢！',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
+    })
   },
 
   /**

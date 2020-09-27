@@ -189,6 +189,7 @@ Page({
           height: clientHeight * ratio
         });
         getApp().globalData.height = that.data.height
+        getApp().globalData.width = that.data.width
         //getApp().globalData.height=that.data.height
         console.log(that.data.height)
         console.log(getApp().globalData.height)

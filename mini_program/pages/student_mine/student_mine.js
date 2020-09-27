@@ -163,6 +163,17 @@ Component({
         console.log(456)
       },
     },
+    
+    to_situation:function(){
+      wx.showLoading({
+        title: '加载中',
+        mask: true,
+      })
+      wx.navigateTo({
+        url:"../situation/situation"
+      })
+      wx.hideLoading()
+    },
 
     to_info:function(){
       wx.showLoading({

@@ -1,0 +1,62 @@
+<!--pages/situation/situation.wxml-->
+<!-- 选择年月 -->
+<view class="picker_group">
+	<picker mode="date" value="{{date}}" end="{{date2}}" fields='month' bindchange="bindDateChange">
+		<view class="picker">
+			{{date}}
+		</view>
+	</picker>
+</view>
+<view class="row">
+	<text class="left">签到汇总</text>
+	<text class="right">本月应签到{{record_num}}次</text>
+</view>
+<view class="caption-wrap">
+	<i-collapse name="{{name}}">
+		<i-collapse-item title="已签到" num="{{sign_num}}次" name="name2" style='height:60rpx;line-height:60rpx'>
+			<block wx:for="{{sign_day}}" wx:for-item="i">
+
+				<view slot="content">
+					<view class="cu-list menu-avatar solid-top">
+						<!-- 每条记录 -->
+						<view class="cu-item">
+							<view class="content" style="left:0rpx">
+								<view class="text-black">{{i.day}}</view>
+								<view class="text-gray text-sm flex">
+									<text class="text-cut">{{i.start}}-{{i.end}}</text>
+								</view>
+							</view>
+							<view class="action">
+								<view class="text-blue" style="color:#64bff1">已签到</view>
+							</view>
+						</view>
+
+					</view>
+				</view>
+			</block>
+		</i-collapse-item>
+
+		<i-collapse-item title="未签到" num="{{unsign_num}}次" name="name3" style='height:60rpx;line-height:60rpx'>
+			<block wx:for="{{unsign_day}}" wx:for-item="i">
+
+				<view slot="content">
+					<view class="cu-list menu-avatar solid-top">
+						<!-- 每条记录 -->
+						<view class="cu-item">
+							<view class="content" style="left:0rpx">
+								<view class="text-black">{{i.day}}</view>
+								<view class="text-gray text-sm flex">
+									<text class="text-cut"> {{i.start}}-{{i.end}}</text>
+								</view>
+							</view>
+							<view class="action">
+								<view class="text-red">未签到</view>
+							</view>
+						</view>
+
+					</view>
+				</view>
+			</block>
+		</i-collapse-item>
+	</i-collapse>
+</view>

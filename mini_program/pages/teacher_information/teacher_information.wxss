@@ -20,5 +20,6 @@ modal {
 }
 
 input {
-  margin: 40rpx
+  margin: 40rpx;
+  display: block
 }
