@@ -1,0 +1,12 @@
+/* pages/change_passwd/change_passwd.wxss */
+@import"/colorui/icon.wxss";
+@import"/colorui/main.wxss";
+@import "/colorui/animation.wxss";
+
+.cu-form-group input {
+	flex: 1;
+	font-size: 30rpx;
+	color: #555;
+	padding-right: 20rpx;
+	text-align: left;
+}

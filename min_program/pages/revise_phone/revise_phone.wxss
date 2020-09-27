@@ -1,0 +1,22 @@
+@import"/colorui/icon.wxss";
+@import"/colorui/main.wxss";
+@import "/colorui/animation.wxss";
+
+input{
+  margin-left: 20rpx;
+}
+
+/** 添加自定义button点击态样式类**/
+.other-button-hover {
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 10px #7EC4F8 inset; 
+}
+
+.cu-form-group input {
+	flex: 1;
+	font-size: 30rpx;
+	color: #555;
+	padding-right: 20rpx;
+	text-align: left;
+}

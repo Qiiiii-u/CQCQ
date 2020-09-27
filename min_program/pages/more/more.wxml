@@ -1,0 +1,77 @@
+<!--pages/more/more.wxml-->
+<view hidden="{{!isData}}">
+	<tabs bind:linchange="swichNav" animated-for-line="true" animated="true">
+		<tabpanel tab="近7天" key="one" slot="one">
+			<view class="tab-content">
+				<view class="title bg-white solid-bottom margin-top" style="font-size: 30rpx;">
+					<view class="title-left"></view>
+					<text class="bold">近七天查寝折线图</text>
+				</view>
+				<view class="cu-card article no-card">
+					<view class="cu-item shadow">
+						<ec-canvas id="mychart-one" canvas-id="mychart-line-one" ec="{{ ecOne }}" style="height:{{winHeight}}rpx">
+						</ec-canvas>
+					</view>
+				</view>
+				<!-- </view> -->
+				<view class="title  bg-white solid-bottom margin-top" style="font-size: 30rpx;">
+					<view class="title-left"></view>
+					<text class="bold">未签到人员</text>
+					<view class="title-right">共<text class="bold"> {{countStu7}} </text>人参与排名</view>
+				</view>
+				<!-- 排行榜 -->
+				<view class="cu-card article no-card">
+					<view class="cu-item shadow">
+						<view class="menu" style="font-size: 30rpx;" wx:for='{{unsignStu7}}' wx:key='navItems'>
+							<view class="menu_left">
+								<text class="pai">{{item.index}}</text>
+								<text class="name">{{item.student_id}}</text>
+							</view>
+							<view class="menu_right">
+								<text class="times">{{item.count}} 次</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</tabpanel>
+
+		<tabpanel tab="近30天" key="two" slot="two">
+			<view class="tab-content">
+				<view class="title bg-white solid-bottom margin-top" style="font-size: 30rpx;">
+					<view class="title-left"></view>
+					<text class="bold">近三十天查寝折线图</text>
+				</view>
+
+				<view class="cu-card article no-card">
+					<view class="cu-item shadow">
+						<ec-canvas id="mychart-two" canvas-id="mychart-line-two" ec="{{ ecTwo }}" style="height:{{winHeight}}rpx">
+						</ec-canvas>
+					</view>
+				</view>
+
+				<view class="title bg-white solid-bottom margin-top" style="font-size: 30rpx;">
+					<view class="title-left"></view>
+					<text class="bold">未签到人员</text>
+					<view class="title-right">共<text class="bold"> {{countStu30}} </text>人参与排名</view>
+				</view>
+				<!-- 排行榜 -->
+				<view class="cu-card article no-card">
+					<view class="cu-item shadow">
+						<view class="menu" style="font-size: 30rpx;" wx:for='{{unsignStu30}}' wx:key='navItems'>
+							<view class="menu_left">
+								<text class="pai">{{item.index}}</text>
+								<text class="name">{{item.student_id}}</text>
+							</view>
+							<view class="menu_right">
+								<text class="times">{{item.count}} 次</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+		</tabpanel>
+	</tabs>
+</view>
+<status-show show="{{!isData}}" image="/images/nodata.png" describe="暂无数据哦~"></status-show>
